@@ -48,15 +48,8 @@ export const getCountryCases=(country)=>dispatch=>{
                 console.log(res.data)
                 const capital_city = res.data[capital];
                 let result = res.data.All;
-                // console.log(capital_city)
-                // for(let name in res.data.All){
-                //     result[name] = res.data.All[name]
-                // }
-                //const num = [1,2,3,4,5,6,]
-                //console.log(...num)
                 result["lat"] = capital_city.lat;
                 result["long"] = capital_city.long
-                // console.log(result)
                 dispatch({
                     type: GET_COUNTRY_CASES,
                     country:result

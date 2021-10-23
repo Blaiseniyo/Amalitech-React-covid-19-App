@@ -2,22 +2,20 @@ import React from 'react';
 import { 
     Card,
     CardActionArea,
-    CardContent,
-    Typography
-
+    CardContent
 }from '@material-ui/core';
 
 import "../../App.scss"
+import { Skeleton } from '@material-ui/lab'
 
-function DataCard(props) {
- const { name , value} = props
+function PendingCard() {
   return (
       <div className="card" >
         <Card className="card">
           <CardActionArea>
               <CardContent className="card-content">
-                  <Typography  variant="h6">{name}</Typography>
-                  <Typography variant="subtitle1" color="textSecondary">({value})</Typography>
+                  <Skeleton animation="wave" width="70%"  height={50} className="skeleton" />
+                  <Skeleton animation="wave" width="25%" height={20} className="skeleton" />
               </CardContent>
           </CardActionArea>
         </Card>
@@ -26,4 +24,4 @@ function DataCard(props) {
 }
 
 
-export default DataCard;
+export default PendingCard;

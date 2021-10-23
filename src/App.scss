@@ -15,7 +15,8 @@
   margin-bottom: 20px;
 }
 .footer{
-  height: auto;
+  // min-height:240px;
+  // height: auto;
   // position: fixed;
   // bottom: 0;
   // left: 0;
@@ -47,18 +48,18 @@
   top:4px;
   max-width: 60%;
   max-height: 23px;
-  margin-left: 0px;
+  margin-right: 6px;
 }
 .country-container{
   display: flex;
-  width: 17%;
+  //width: 15%;
   //flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   // margin-bottom: 25px;
 }
 .card{
-  // height: auto;
+  min-height: 50%;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .card-content{
@@ -69,6 +70,10 @@
   position: relative;
   right: 2px;
   margin-left: 30px;
+}
+
+.toggle-button{
+  color: #000;
 }
 
 // for leaflet to appear on full page

@@ -13,7 +13,7 @@ const initialState = {
   failed:false,
 };
 
-export default (state = initialState, action) => {
+export default  (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_CASES:
       return {
@@ -40,7 +40,6 @@ export default (state = initialState, action) => {
           failed:true,
         }
     case GET_COUNTRY_CASES:
-        console.log(action.country)
         return{
             ...state,
             failed:false,
