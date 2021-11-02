@@ -14,7 +14,7 @@
   align-items: 'center';
   margin-bottom: 20px;
 }
-.footer{
+.footer, .home-footer{
   // min-height:240px;
   // height: auto;
   // position: fixed;
@@ -30,13 +30,74 @@
   font-size: 10px;
   padding: 10px;
 }
+.home-footer{
+  font-size: 22px;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.signin-header, .or-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.signin-header{
+  font-size: 30px;
+  color: #19459D
+}
+
+.or-container{
+  margin-top: 20px;
+}
+.signin-container{
+  // position: relative;
+  // top: 80px;
+  margin-top: 2000px;
+}
+.styled-container,.signin-container{
+  position: relative;
+  top: 80px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)
+}
+.styled-container{
+  border-radius: 8px;  
+
+}
+ .form-container{
+   margin: auto;
+   width: 80%;
+ }
+.button-login , .password {
+  font-size:15px;
+}
+// .forgot-password {
+//   font-size: 15px;
+// }
+.left-page{
+  // background-color: #EEEEEE;
+  position: relative;
+}
+
+.covid-pic{
+  position: absolute;
+  width: 98%;
+  height: 94%;
+}
 .result{
   position: relative;
   top: 90px;
 }
 .container{
-  width: 70%;
+  width: 65%;
+  margin: auto;
+}
+.rest-container{
+  position: relative;
+  top:60px;
+  width: 35%;
   margin: auto;
 }
 

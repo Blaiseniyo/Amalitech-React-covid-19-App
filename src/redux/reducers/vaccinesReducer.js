@@ -3,14 +3,22 @@ import {
     GET_COUNTRY_VACCINE,
     GET_COUNTRY_VACCINE_PENDING,
     GET_VACCINE_PENDING,
-    GET_VACCINE_FAILED }
-from "../actions/vaccinesAction";
+    GET_VACCINE_FAILED,
+    CLEAR_SNACKBAR
+}from "../actions/vaccinesAction";
 
 const initialState = {
-  world: null,
-  country:{},
+  worldCases: null,
+  worldVaccination: null,
+  countryCases:{}, 
+  countryVaccination:{}, 
   pending: false,
   failed:false,
+  snackBarMessage:{
+    open:false,
+    severity: '',
+    message:""
+}
 };
 
 export default (state = initialState, action) => {
@@ -38,6 +46,11 @@ export default (state = initialState, action) => {
           ...state,
           pending:false,
           failed:true,
+          snackBarMessage:{
+            open:true,
+            severity: 'error',
+            message:action.message
+          }
         }
     case GET_COUNTRY_VACCINE:
         return{
@@ -46,6 +59,16 @@ export default (state = initialState, action) => {
             pending:false,
             country:action.country
         }
+    case CLEAR_SNACKBAR:
+      return {
+          ...state,
+          failed:false,
+          snackBarMessage: {
+              open: false,
+              severity: '',
+              message: null
+          }
+      }
     default:
       return state;
   }

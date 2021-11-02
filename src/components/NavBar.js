@@ -13,21 +13,16 @@ import {
     IconButton,
     Drawer
 } from '@material-ui/core';
-
-import { Menu } from '@material-ui/icons';
-
+import { Menu, ChevronLeft } from '@material-ui/icons';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
-
 import { getCountryCases } from '../redux/actions/casesAction';
-
 import { getCountryVaccine } from "../redux/actions/vaccinesAction";
-
 import {useDispatch} from "react-redux";
-
+import { useHistory } from "react-router-dom";
+import { logout } from "../redux/actions/authActions";
 import log from "../assets/amalitech-log.png";
-
 import Search from "./SearchBar";
-
+import "../App.scss"
 
 const useStyles = makeStyles(theme => ({
     navDisplay: {
@@ -38,9 +33,17 @@ const useStyles = makeStyles(theme => ({
     back:{
         backgroundColor:"#EEEEEE"
     },
+    toolbar: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: theme.spacing(0, 1),
+      ...theme.mixins.toolbar,
+    }
   }))
 
 function Header (){
+    const history = useHistory()
     const classes = useStyles()
     const dispatch = useDispatch();
     const [countrySearch,setCountrySearch]= useState(null);
@@ -75,24 +78,24 @@ function Header (){
     const displayDesktop = () => {
     return (
         <Toolbar>
-            <Hidden smUp>
+            {/* <Hidden smUp={true} > */}
                 <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
                 >
-                <Menu className="toggle-button" />
+                  <Menu className="toggle-button" />
                 </IconButton>
-            </Hidden>
+            {/* </Hidden> */}
             <Container maxWidth='lg' className={classes.navDisplay}>
                 <Hidden xsDown>
                     {amaliTeachLogo}
                 </Hidden>
                 <Search onChange={handleOnchange} onKeyDown={handleKeyPress}/>
+                {/* <Hidden smDown>
+                    <Button href="/logout"  className={classes.logo} startIcon={ <LogoutIcon/> }>Logout</Button>
+                </Hidden> */}
             </Container>
-            <Hidden smDown>
-                <Button href="/logout"  className={classes.logo} startIcon={ <LogoutIcon/> }>Logout</Button>
-            </Hidden>
         </Toolbar>
         )
     }
@@ -105,10 +108,20 @@ function Header (){
             open={open}
             onClose={handleDrawerClose}
           >
+          <div className={classes.toolbar}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeft
+                className={classes.navIcons}
+              />
+            </IconButton>
+
+          </div>
             <List>
-              <ListItem button key="Logout" onClick={onclick}>
+              <ListItem button key="Logout" onClick={()=>{
+                  dispatch(logout(history))}
+                }>
                 <ListItemIcon
-                  className={classes.navIcons}
+                  // className={classes.navIcons}
                 >
                   <LogoutIcon/>
                 </ListItemIcon>

@@ -5,6 +5,7 @@ export const GET_COUNTRY_VACCINE = "GET_COUNTRY_VACCINE";
 export const GET_COUNTRY_VACCINE_PENDING = "GET_COUNTRY_VACCINE_PENDING";
 export const GET_VACCINE_PENDING = "GET_VACCINE_PENDING";
 export const GET_VACCINE_FAILED = "GET_VACCINE_FAILED";
+export const CLEAR_SNACKBAR = "CLEAR_SNACKBAR";
 
 export const getAllVaccine=() => dispatch => {
     dispatch({
@@ -42,14 +43,22 @@ export const getCountryVaccine=(country)=>dispatch=>{
             })
         }else{
             dispatch({
-                type:GET_VACCINE_FAILED
+                type:GET_VACCINE_FAILED,
+                message:`COVID-19 Vaccination Data for ${country} are not available`
             })
         }
         
     })
     .catch(err => {
         dispatch({
-            type:GET_VACCINE_FAILED
+            type:GET_VACCINE_FAILED,
+            message:`COVID-19 Vaccination Data for ${country} are not available`
         })
     })
 }
+
+export const clearSnackbar = () => dispatch => {
+    dispatch({
+      type: CLEAR_SNACKBAR
+    })
+  }
