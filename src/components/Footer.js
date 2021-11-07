@@ -1,7 +1,7 @@
 import React,{useEffect,useRef} from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import { Typography, Grid, Snackbar, Slide } from '@material-ui/core';
-import { getAllCases , getCountryCases, clearSnackbar, getCountryVaccine,getAllVaccine } from '../redux/actions/casesAction';
+import { getCountryCases, clearSnackbar, getCountryVaccine } from '../redux/actions/casesAction';
 // import { getAllVaccine, getCountryVaccine } from "../redux/actions/vaccinesAction";
 import FooterPending from "./footerPending";
 import MuiAlert from '@material-ui/lab/Alert';
@@ -54,9 +54,9 @@ function Footer() {
             <div
             className="footer"
             >
-                <div className="container" >
+                <div className="footer-container" >
                 <div className="country-container">
-                    <img src={urlRef.current} className="flag-container"/>
+                    <img src={urlRef.current} alt="flag" className="flag-container"/>
                     <Typography variant="h5">{cases.countryCases.country}</Typography>
                 </div>
                 <div >

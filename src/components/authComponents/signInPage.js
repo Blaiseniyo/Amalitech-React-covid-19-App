@@ -23,7 +23,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 import LoginForm from "./loginFrom";
 import SignUpForm from "./signUp";
 import Covid from "../../assets/COVID-19-1.jpg";
-import {clearSnackbar} from "../../redux/actions/authActions"
+import { useHistory } from 'react-router-dom'
+import {clearSnackbar,loginWithGoogle,signUpWithGoogle} from "../../redux/actions/authActions"
 import "../../App.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -93,14 +94,18 @@ const SignIn = ()=>{
     const auth = useSelector(state => state.auth);
     const dispath = useDispatch();
     const [value, setValue] = useState(0);
-
+    const history = useHistory()
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
     const handleSuccess =(response)=>{
-        console.log(response)
+        dispath(loginWithGoogle(response.tokenId,history))
     }
 
+    const handleSingUpSuccess = (response)=>{
+        const data = {email:response.profileObj.email}
+        dispath(signUpWithGoogle(data,response.tokenId,history))
+    }
     const handleFailure = (response)=>{
         console.log(response)
     }
@@ -166,7 +171,23 @@ const SignIn = ()=>{
                   </div> 
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                      <SignUpForm/>
+                      <SignUpForm reset={setValue}/>
+                      <div className="container">
+                      <div className="or-container">
+                          <hr width="150px"/>
+                          <Typography variant="subtitle2">or</Typography>
+                          <hr width="150px" />
+                      </div>
+                      <div className="or-container">
+                          <GoogleLogin
+                              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                              buttonText="Sign Up With Google"
+                              onSuccess={handleSingUpSuccess}
+                              onFailure={handleFailure}
+                              cookiesPolicy={"single_host_origin"}
+                          />
+                      </div>
+                  </div>
                   </TabPanel>
               </Grid>
           </Grid>

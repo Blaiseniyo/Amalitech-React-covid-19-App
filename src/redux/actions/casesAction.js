@@ -102,11 +102,18 @@ export const getCountryCases=(country)=>dispatch=>{
                     country:cases
                 })
             }else{
-                const capital = res.data.all.capital_city?res.data.All.capital_city:res.data[1];
-                const capital_city = res.data[capital];
+                const capital = res.data.All.capital_city?res.data.All.capital_city:res.data[Object.keys(res.data)[1]];
+                let capital_city="";
+                if(res.data[capital]){
+                    capital_city = res.data[capital];
+                }else{
+                
+                    capital_city= res.data[Object.keys(res.data)[1]];
+                }
                 let result = res.data.All;
                 result["lat"] = capital_city.lat;
                 result["long"] = capital_city.long
+                console.log(result)
                 dispatch({
                     type: GET_COUNTRY_CASES,
                     country:result

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { 
     AppBar,
     Toolbar,
-    Button,
     makeStyles,
     List,
     ListItem,
@@ -78,23 +77,18 @@ function Header (){
     const displayDesktop = () => {
     return (
         <Toolbar>
-            {/* <Hidden smUp={true} > */}
-                <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                >
-                  <Menu className="toggle-button" />
-                </IconButton>
-            {/* </Hidden> */}
+            <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            >
+              <Menu className="toggle-button" />
+            </IconButton>
             <Container maxWidth='lg' className={classes.navDisplay}>
                 <Hidden xsDown>
                     {amaliTeachLogo}
                 </Hidden>
                 <Search onChange={handleOnchange} onKeyDown={handleKeyPress}/>
-                {/* <Hidden smDown>
-                    <Button href="/logout"  className={classes.logo} startIcon={ <LogoutIcon/> }>Logout</Button>
-                </Hidden> */}
             </Container>
         </Toolbar>
         )

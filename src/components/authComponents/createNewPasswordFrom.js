@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import { TextField, InputAdornment, Button,Grid, Typography } from '@material-ui/core';
+import React from 'react'
+import { TextField, InputAdornment, Button,Grid, Typography,Slide,
+  Snackbar } from '@material-ui/core';
 import { useDispatch,useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import { LockOpen, MailOutline,AccountCircle } from '@material-ui/icons';
+import { LockOpen} from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom'
-import {createNewPassword} from "../../redux/actions/authActions"
+import { useHistory } from 'react-router-dom';
+import {createNewPassword,clearSnackbar} from "../../redux/actions/authActions";
+import MuiAlert from '@material-ui/lab/Alert';
 import "../../App.scss"
 
 
@@ -37,15 +39,29 @@ const validationSchema = yup.object({
 function LoginForm(props) {
   const dispatch = useDispatch();
   const auth = useSelector(state=> state.auth);
-  const [formData,setFormData] = useState({
-    password:"",
-    confirmPassword:""
-  })
   const classes = useStyles();
   const history = useHistory()
+  const transitionSnackbar = (props)=>{
+    return <Slide {...props} direction ="right"/>;
+  }
 
+  const closeTimer= () =>{
+    dispatch(clearSnackbar());
+  }
   return (
     <>
+      <Snackbar
+            open={auth.snackBarMessage.open}
+            onClose={closeTimer}
+            autoHideDuration={4000}
+            TransitionComponent={transitionSnackbar}
+        >
+            <MuiAlert
+                severity={auth.snackBarMessage.severity}
+                variant='filled'
+                elevation={6}
+            >{auth.snackBarMessage.message}</MuiAlert>
+        </Snackbar>
       <div className="rest-container">
         <div className="styled-container">
         <div className="form-container">
@@ -59,7 +75,10 @@ function LoginForm(props) {
             </Grid>
             <Grid item xs={12} >
             <Formik
-            initialValues={formData}
+            initialValues={{
+              password:"",
+              confirmPassword:""
+            }}
             onSubmit={values => {
               dispatch(createNewPassword(props.location.search,values,history))
             }}

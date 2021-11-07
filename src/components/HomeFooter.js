@@ -6,7 +6,6 @@ function Footer() {
     return (
         <div className='home-footer'>
             <Typography variant="h6">&copy; AMALITECH 2021</Typography>
-            {/* {amaliTeachLogo} */}
         </div>
     )
 }

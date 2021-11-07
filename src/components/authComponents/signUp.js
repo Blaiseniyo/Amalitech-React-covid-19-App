@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TextField, InputAdornment, Button } from '@material-ui/core';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import { LockOpen, MailOutline,AccountCircle } from '@material-ui/icons';
+import { LockOpen, MailOutline } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom'
 import {signUp} from "../../redux/actions/authActions"
 import "../../App.scss"
 
@@ -18,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const validationSchema = yup.object({
-  userName: yup
-      .string()
-      .min(4)
-      .required('User Name is required'),
   email: yup
       .string()
       .email('Invalid email')
@@ -37,7 +32,7 @@ const validationSchema = yup.object({
       is: val => (val && val.length > 0 ? true : false),
       then: yup.string().oneOf(
           [yup.ref("password")],
-          "Passwords must be equail"
+          "Passwords must be equal"
       )
   })
 
@@ -45,47 +40,28 @@ const validationSchema = yup.object({
 
 function LoginForm(props) {
   const dispatch = useDispatch()
-  const auth = useSelector(state=> state.auth);
-  const [formData,setFormData] = useState({
-    userName:"",
-    email:"",
-    password:"",
-    confirmPassword:""
-  })
+ 
   const classes = useStyles();
-  const history = useHistory()
+
 
   return (
     <>
       <div className="container">
             <div>
             <Formik
-            initialValues={formData}
+            initialValues={{
+              email:"",
+              password:"",
+              confirmPassword:""
+            }}
             onSubmit={values => {
-              const {email, password,userName} = values
-              dispatch(signUp({email, password,userName}))
+              const {email, password} = values
+              dispatch(signUp({email, password},props.reset))
             }}
              validationSchema={validationSchema}
           >
             {({ values, errors, touched }) => (
           <Form  form-data='form-1'>
-              <Field
-                required
-                name="userName"
-                id="userName"
-                className={classes.margin}
-                label="User Name"
-                as={TextField}
-                error={touched.userName && errors.userName}
-                helperText={touched.userName && errors.userName}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle/>
-                    </InputAdornment>
-                  ),
-                }}
-              />
               <Field
                 required
                 name="email"
@@ -129,8 +105,8 @@ function LoginForm(props) {
                 name="confirmPassword"
                 id="confirmPassword"
                 as={TextField}
-                error={touched.password && errors.password}
-                helperText={touched.password && errors.password}
+                error={touched.confirmPassword && errors.confirmPassword}
+                helperText={touched.confirmPassword && errors.confirmPassword}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
