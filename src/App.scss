@@ -1,3 +1,19 @@
+@import "./variables";
+
+@mixin flexDisplay($position) {
+  display: flex;
+  justify-content: $position;
+  align-items: center;
+}
+@mixin container($width) {
+  width: $width;
+  margin: auto;
+}
+@mixin position($position,$top) {
+  position: relative;
+  top:$top;
+}
+
 .App {
   text-align: center;
 }
@@ -9,54 +25,113 @@
 
 // my styless start from here
 .header{
-  display: 'flex';
-  justify-content: 'space-between';
-  align-items: 'center';
+  @include flexDisplay(space-between);
   margin-bottom: 20px;
 }
-.footer{
-  // min-height:240px;
-  // height: auto;
-  // position: fixed;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
+
+.navBar{
+  @include flexDisplay(space-between);
+  
+}
+
+.navBack{
+  background-color: $navBackgroundColor;
+}
+.footer, .home-footer{
   text-align: center;
-  background-color: #4A4848;
+  background-color: $footerBackground;
   color: white;
-  word-wrap: break-word;
-  z-index: 5;
   font-weight: normal;
   font-size: 10px;
   padding: 10px;
 }
+.home-footer{
+  font-size: 22px;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.signin-header, .or-container{
+  @include flexDisplay(center);
+}
 
-.result{
+// .signin-header{
+//   font-size: 30px;
+//   color: $signInColor
+// }
+
+.or-container{
+  margin-top: 20px;
+}
+.signin-container{
+  // position: relative;
+  // top: 80px;
+  margin-top: 2000px;
+}
+.styled-container,.signin-container{
+  // position: relative;
+  // top: 80px;
+  @include position(relative,80px);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)
+}
+.styled-container{
+  border-radius: 8px;  
+
+}
+ .form-container{
+   margin: auto;
+   width: 90%;
+   margin-bottom: 20px;
+ }
+.button-login , .password {
+  font-size:15px;
+}
+// .forgot-password {
+//   font-size: 15px;
+// }
+.left-page{
+  // background-color: #EEEEEE;
   position: relative;
-  top: 90px;
+}
+
+.covid-pic{
+  position: absolute;
+  width: 98%;
+  height: 94%;
+}
+.result{
+  // position: relative;
+  // top: 90px;
+  @include position(relative,90px);
 }
 .container{
-  width: 70%;
+  @include container(65%);
+}
+.footer-container{
+  @include container(75%);
+}
+.rest-container{
+  @include flexDisplay(center);
+  width: 80%;
   margin: auto;
+
 }
 
 .country{
   line-height: 1.0;
 }
 .flag-container{
-  position: relative;
-  top:4px;
+  // position: relative;
+  // top:4px;
+  // @include position(relative,4px);
   max-width: 60%;
   max-height: 23px;
   margin-right: 6px;
 }
 .country-container{
-  display: flex;
-  //width: 15%;
-  //flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  // margin-bottom: 25px;
+  @extend .or-container;
 }
 .card{
   min-height: 50%;
@@ -73,7 +148,7 @@
 }
 
 .toggle-button{
-  color: #000;
+  color: $toggleBtnColor;
 }
 
 // for leaflet to appear on full page
