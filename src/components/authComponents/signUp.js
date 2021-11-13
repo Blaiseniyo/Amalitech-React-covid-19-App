@@ -46,7 +46,7 @@ function LoginForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div >
             <div>
             <Formik
             initialValues={{

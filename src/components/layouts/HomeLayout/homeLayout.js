@@ -9,8 +9,9 @@ import Footer from '../../HomeFooter'
 
 const useStyles = makeStyles(() => ({
   content: {
-    height: '80%'
-  }
+    height: '80%',
+    marginBottom:"30px"
+  },
 }));
 
 const DefaultM = props => {
@@ -21,7 +22,7 @@ const DefaultM = props => {
       <NavBar />
       <main className={classes.content}>{children}
       </main>
-      <Footer />
+      <Footer className={classes.separetor} />
     </div>
   );
 };

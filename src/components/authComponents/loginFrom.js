@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, InputAdornment, Button, Grid } from '@material-ui/core';
+import { TextField, InputAdornment, Button, Grid, Typography } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { LockOpen, MailOutline } from '@material-ui/icons';
@@ -33,7 +33,7 @@ function LoginForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div >
           <Formik
             initialValues={{
               email:"",
@@ -81,17 +81,11 @@ function LoginForm(props) {
               />
                <Grid container direction="row" justifyContent="center" alignContent="center">
                     <Grid item  xs={12} sm={5} md={5} key={0}>
-                        {/* <div style={{ display: "grid", gridTemplateColumns: "100% 0%", alignItems: "center", marginTop:"20px",  }}> */}
                         <Button type="submit" variant="contained" color="primary" 
                         className="button-login">Login</Button>
-                        {/* </div> */}
-
                     </Grid>
                     <Grid item  xs={12} sm={7} md={7} key={2}>
-                        {/* <div style={{ display: "grid", gridTemplateColumns: "100% 0%", alignItems: "center", marginTop:"20px",  }}> */}
-                        <a href="/request" style={{ textAlign: "end" }} className="forgot-password" >Forgot password?</a>
-                        {/* </div> */}
-
+                        <a onClick={()=> history.push("/request")} className="forgot-password" ><Typography className="link" variant="subtitle1" > Forgot password?</Typography></a>
                     </Grid>
                </Grid>
 

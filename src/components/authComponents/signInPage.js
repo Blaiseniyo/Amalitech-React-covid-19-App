@@ -153,7 +153,7 @@ const SignIn = ()=>{
                   <TabPanel value={value} index={0} >
                       
                   <LoginForm/>
-                  <div className="container">
+                  <div >
                       <div className="or-container">
                           <hr width="150px"/>
                           <Typography variant="subtitle2">or</Typography>
@@ -172,7 +172,7 @@ const SignIn = ()=>{
                   </TabPanel>
                   <TabPanel value={value} index={1}>
                       <SignUpForm reset={setValue}/>
-                      <div className="container">
+                      <div >
                       <div className="or-container">
                           <hr width="150px"/>
                           <Typography variant="subtitle2">or</Typography>

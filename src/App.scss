@@ -43,7 +43,8 @@
   color: white;
   font-weight: normal;
   font-size: 10px;
-  padding: 10px;
+  height: 100%;
+  padding-top: 0.5px;
 }
 .home-footer{
   font-size: 22px;
@@ -57,10 +58,11 @@
   @include flexDisplay(center);
 }
 
-// .signin-header{
-//   font-size: 30px;
-//   color: $signInColor
-// }
+.link{
+  text-align: "end";
+  text-decoration: underline;
+  color: #2b47b5; 
+}
 
 .or-container{
   margin-top: 20px;
