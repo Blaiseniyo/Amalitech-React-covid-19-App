@@ -9,7 +9,7 @@ import Footer from '../../Footer'
 
 const useStyles = makeStyles(() => ({
   content: {
-    height: '80%'
+    height: '100%'
   },
   
 }));

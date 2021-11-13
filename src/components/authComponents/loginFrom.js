@@ -79,13 +79,13 @@ function LoginForm(props) {
                   ),
                 }}
               />
-               <Grid container direction="row" justifyContent="center" alignContent="center">
-                    <Grid item  xs={12} sm={5} md={5} key={0}>
-                        <Button type="submit" variant="contained" color="primary" 
-                        className="button-login">Login</Button>
+               <Grid container direction="row" justifyContent="center" alignContent="space-between" spacing={1} className="container" style={{marginTop:"20px"}}> 
+                    <Grid item  xs={12} sm={12} md={6} key={0} >
+                        <Button type="submit" variant="contained" color="primary" style={{height:"30px",width:"100%"}} 
+                        className="button-login">Sign In</Button>
                     </Grid>
-                    <Grid item  xs={12} sm={7} md={7} key={2}>
-                        <a onClick={()=> history.push("/request")} className="forgot-password" ><Typography className="link" variant="subtitle1" > Forgot password?</Typography></a>
+                    <Grid item  xs={12} sm={12} md={6} key={2}>
+                        <a onClick={()=> history.push("/request")}  className="forgot-password" ><Typography className="link" variant="subtitle1" > Forgot password?</Typography></a>
                     </Grid>
                </Grid>
 

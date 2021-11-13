@@ -59,22 +59,19 @@
 }
 
 .link{
-  text-align: "end";
   text-decoration: underline;
   color: #2b47b5; 
+  cursor: pointer;
+  width: 100%;
 }
 
 .or-container{
   margin-top: 20px;
 }
 .signin-container{
-  // position: relative;
-  // top: 80px;
   margin-top: 2000px;
 }
 .styled-container,.signin-container{
-  // position: relative;
-  // top: 80px;
   @include position(relative,80px);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)
 }
@@ -90,11 +87,8 @@
 .button-login , .password {
   font-size:15px;
 }
-// .forgot-password {
-//   font-size: 15px;
-// }
+
 .left-page{
-  // background-color: #EEEEEE;
   position: relative;
 }
 
@@ -104,15 +98,13 @@
   height: 94%;
 }
 .result{
-  // position: relative;
-  // top: 90px;
   @include position(relative,90px);
 }
 .container{
   @include container(65%);
 }
 .footer-container{
-  @include container(75%);
+  @include container(85%);
 }
 .rest-container{
   @include flexDisplay(center);
@@ -125,9 +117,6 @@
   line-height: 1.0;
 }
 .flag-container{
-  // position: relative;
-  // top:4px;
-  // @include position(relative,4px);
   max-width: 60%;
   max-height: 23px;
   margin-right: 6px;
